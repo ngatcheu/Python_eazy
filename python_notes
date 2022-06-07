@@ -1,0 +1,6 @@
+import sys
+ages = int(input("age :"))
+if ages >= 18 :
+     print("je suis majeur alors bienvenue")
+else :
+       sys.exit("voici un nouveau mineur")
