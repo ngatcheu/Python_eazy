@@ -1,6 +1,42 @@
+--le module "sys" Ce module fournit un accès à certaines variables utilisées et maintenues par l'interpréteur, et à 
+des fonctions interagissant fortement avec ce dernier. Ce module est toujours disponible.
+
 import sys
 ages = int(input("age :"))
 if ages >= 18 :
      print("je suis majeur alors bienvenue")
 else :
        sys.exit("voici un nouveau mineur")
+       
+ 
+ --Le module ""Ce module fournit une façon portable d'utiliser les fonctionnalités dépendantes du système d'exploitation.
+
+import os
+os.system("ping 8.8.8.8")
+
+
+--The "glob" module finds all the pathnames matching a specified pattern according to the rules used by the Unix shell,
+although results are returned in arbitrary order.
+
+import glob
+print("utilisons glob.glob()")
+fl =glob.glob('/home/**/*.py',recursive=True)
+for f in fl :
+    print (f)
+    
+Le module subprocess vous permet de lancer de nouveaux processus, les connecter à des tubes d'entrée/sortie/erreur, et d'obtenir leurs codes de retour.
+subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, capture_output=False, shell=False, cwd=None, timeout=None, check=False, encoding=None, errors=None, text=None, env=None, universal_newlines=None, **other_popen_kwargs)
+
+import subprocess
+p1=subprocess.run(['cat','os1.py'], capture_output=True,text=True)
+p2=subprocess.run(['egrep','-c','print'], capture_output=True,text=True, input=p1.stdout)
+print(p2.stdout)
+
+
+--Ce module fournit des opérations sur les expressions rationnelles similaires à celles que l'on trouve dans Perl.
+
+import re
+m = re.search('(?<=abc)def', 'abcdef')
+m.group(0)
+
+--Le module datetime fournit des classes permettant de manipuler les dates et les heures.
