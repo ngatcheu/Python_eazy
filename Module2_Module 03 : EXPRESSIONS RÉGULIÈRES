@@ -1,0 +1,37 @@
+--pour compiler un fichier python en ligne de commande 
+$python3 fichier.py
+
+--La commande Egrep 
+grep [OPTION]... PATTERNS [FILE]...
+Search for PATTERNS in each FILE.
+Example: grep -i 'hello world' menu.h main.c
+PATTERNS can contain multiple patterns separated by newlines.
+egrep -c  -v  "j" os1.txt 
+
+
+--Le modeule python re      https://docs.python.org/fr/3.10/library/re.html?highlight=re#module-re
+Ce module fournit des opérations sur les expressions rationnelles similaires à celles que l'on trouve dans Perl.
+
+import re
+m = re.search('(?<=abc)def', 'abcdef')
+m.group(0)
+'def' 
+
+--Le module Datatime https://docs.python.org/fr/3.10/library/datetime.html?highlight=time#module-datetime
+                     https://docs.python.org/fr/3.10/library/datetime.html?highlight=time#strftime-strptime-behavior
+Le module datetime fournit des classes permettant de manipuler les dates et les heures.
+La classe date n est pas un type  de donnees en python 
+Bien que les calculs de date et d'heure sont gérés, l'attention lors de l'implémentation s'est essentiellement 
+portée surl'efficacité de l'extraction des attributs en vue de leur manipulation et formatage pour l'affichage.
+Un tick peut etre considere comme la plus petite unite permettant de mesurer le temps 
+------------exemple--------------
+--afficher la date aujourd hui avec les ticks
+from datetime import datetime
+now = datetime.now().time()
+print(now)
+
+--afficher le calendrier
+import calendar
+cal = calendar.prcal(2022)
+#afficher le calendrier
+print(cal)
