@@ -1,0 +1,63 @@
+import multiprocessing
+
+
+#multiprocessus avec file d'attente
+def add_list(mylist,q):
+    #ajouter les elements de la liste
+    for n in mylist:
+        print("ajout de : ", n)
+        q.put(n)
+def print_queue(q):
+    print("les elements presents dans votre queue:")
+    while not q.empty():
+        print(q.get())
+    print("Notre queue est vide:")
+if __name__ == "__main__":import multiprocessing
+
+
+#multiprocessus avec file d'attente
+def add_list(mylist,q):
+    #ajouter les elements de la liste
+    for n in mylist:
+        print("ajout de : ", n)
+        q.put(n)
+def print_queue(q):
+    print("les elements presents dans votre queue:")
+    while not q.empty():
+        print(q.get())
+    print("Notre queue est vide:")
+if __name__ == "__main__":
+    #notre liste
+    mylist = ["toto","titi","tata","baba"]
+
+    #creation de notre queue
+    q = multiprocessing.Queue()
+
+    #creattion des processus
+    p1 = multiprocessing.Process(target=add_list, args=(mylist, q))
+    p2 = multiprocessing.Process(target=print_queue, args=(q,))
+
+    # execution du processus p1
+    p1.start()
+    p2.join()
+
+    #execution du processus p2
+    p2.start()
+    p1.join()
+    #notre liste
+    mylist = ["toto","titi","tata","baba"]
+
+    #creation de notre queue
+    q = multiprocessing.Queue()
+
+    #creattion des processus
+    p1 = multiprocessing.Process(target=add_list, args=(mylist, q))
+    p2 = multiprocessing.Process(target=print_queue, args=(q,))
+
+    # execution du processus p1
+    p1.start()
+    p2.join()
+
+    #execution du processus p2
+    p2.start()
+    p1.join()
