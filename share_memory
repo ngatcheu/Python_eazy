@@ -1,0 +1,39 @@
+import multiprocessing, math
+
+#liste vide
+
+def double_list(mylist,result,produit):
+
+  #Ajouter les resultats du double de la liste globale
+  for j,num in enumerate(mylist):
+      result[j]=(num*2)
+  produit.value = math.prod(result)
+
+  #print la liste globale
+  print("Resultat (processus p1):{}".format(result[:]))
+  print("Produit (p1)",produit.value)
+
+if __name__ == "__main__":
+        #list d'entree
+        mylist = [1,2,3,4,5]
+
+        result =multiprocessing.Array('i',5)
+        produit = multiprocessing.Value('i')
+
+        #Nouveau processus
+        p1= multiprocessing.Process(target = double_list,args= (mylist,result,produit))
+        #start processus
+        p1.start()
+        #attendre la fin de son execution
+        p1.join()
+
+        produit.value = math.prod(result)
+
+        #print liste globale
+        print("Resultat (programme main):{}".format(result[:]))
+        print("Resultat (programme main):{}".format(produit.value))
+
+
+
+        
+        
