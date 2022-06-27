@@ -1,0 +1,23 @@
+import multiprocessing
+import os
+
+#Le pooling permet de decharger les taches de travail des processsus en faisant une repartition
+#de charge 
+
+def square(n):
+    print("process id pour {0}: {1}".format(n, os.getpid()))
+    return (n*n)
+
+if __name__ == "__main__":
+    #liste
+    mylist = [1,2,3,4,5]
+
+    #objet pool
+    p = multiprocessing.Pool()
+
+    #map liste a la fonction cible
+    result = p.map(square,mylist)
+    print(result)
+
+
+    
