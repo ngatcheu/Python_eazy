@@ -1,0 +1,39 @@
+import multiprocessing
+
+#les pipes permettent de gerer des processus,les pipes ont un processus entrees
+#et un en sorties
+def sender(conn,msgs):
+    
+    for msg in msgs:
+        conn.send(msg)
+        print("Envoi de message: {}".format(msg))
+    conn.close()
+
+def receiver(conn):
+
+    while 1:
+        msg = conn.recv()
+        if msg == "END":
+            break
+        print("Reception du message : {}".format(msg))
+
+if __name__ == "__main__":
+     #message a envoyer
+     msgs = ["Salut", "Fabrice","Comment tu vas", "END"]
+
+     #Creation du canal pipe
+     p_conn ,ch_conn = multiprocessing.Pipe()
+
+     #Creation des processus
+     p1 = multiprocessing.Process(target=sender, args=(p_conn,msgs))
+     p2 = multiprocessing.Process(target=receiver, args=(ch_conn,))
+
+     #execution des processus
+     p1.start()
+     p2.start()
+
+     #Attendre jusqu'a la fin des executions
+     p1.join()
+     p2.join()
+
+     
