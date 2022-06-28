@@ -1,4 +1,5 @@
 #Nouvelle classe python pour le multithreading: ThreadPoolExecutor
+#https://docs.python.org/fr/3.10/library/concurrent.futures.html?highlight=threadpoolexecutor#concurrent.futures.ThreadPoolExecutor
 
 from concurrent.futures import ThreadPoolExecutor
 
